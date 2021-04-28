@@ -14,7 +14,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.up * moveSpeed * Time.deltaTime;
-        //Debug.Log(Time.deltaTime);
+        float h = Input.GetAxis("Horizontal");
+        transform.position += (Vector3.right * h * moveSpeed * Time.deltaTime).normalized;
+        //transform.position += transform.up * moveSpeed * Time.deltaTime;
     }
 }
