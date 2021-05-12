@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
+    AudioSource audioSource;
+    [SerializeField] AudioClip bangClip;
 
-    void Start()
+    void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -16,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(bullet, transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(bangClip, 0.2f);
         }
     }
 }
